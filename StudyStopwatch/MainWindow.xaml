@@ -3,10 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StudyStopwatch"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Study" Height="242.429" Width="206.234" ResizeMode="NoResize" UseLayoutRounding="True">
+    <Window.Resources>
+        <RoutedUICommand x:Key="StartCommand" Text="Text" />
+        <RoutedUICommand x:Key="SaveCommand" Text="Text" />
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource StartCommand}" 
+                    Executed="Shortcut_StartTimer" />
+        <CommandBinding Command="{StaticResource SaveCommand}" 
+                    Executed="CommandBinding_Executed" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="S" Command="{StaticResource StartCommand}" />
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{StaticResource SaveCommand}" />
+    </Window.InputBindings>
+    <Grid Margin="0,10,4,14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="32*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="97"/>
+            <ColumnDefinition Width="Auto" MinWidth="103"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="1" x:Name="d_hours" Content="Label" HorizontalAlignment="Right" Margin="0,7,18,0" VerticalAlignment="Top" Height="35" Width="75" FontSize="14" RenderTransformOrigin="0.579,0.438" Grid.RowSpan="2"/>
+        <Button x:Name="button_activate" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Height="20" Margin="10,0,0,0" Grid.Row="1"/>
+        <Button x:Name="button_save" Content="Save" HorizontalAlignment="Right" Margin="0,0,24,0" VerticalAlignment="Bottom" Width="69" Grid.Column="1" Height="20" Grid.Row="1"/>
+        <Label Grid.Column="1" x:Name="d_minutes" Content="Label" HorizontalAlignment="Right" Margin="0,40,18,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.499,2.802" Height="26" Grid.RowSpan="2"/>
+        <Label Grid.Column="1" x:Name="d_seconds" Content="Label" HorizontalAlignment="Right" Margin="0,64,18,0" VerticalAlignment="Top" Width="75" Height="26" Grid.RowSpan="2"/>
+        <Label x:Name="label_hours" Content="Hours" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="75" FontSize="14" FontFamily="Global Sans Serif" Grid.RowSpan="2"/>
+        <Label x:Name="label_minutes" Content="Minutes" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="75" FontFamily="Global Sans Serif" Height="24" RenderTransformOrigin="0.741,0.114" Grid.RowSpan="2"/>
+        <Label x:Name="label_seconds" Content="Seconds" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.485,0.566" FontFamily="Global Sans Serif" Height="24" Grid.RowSpan="2"/>
+        <Button x:Name="button_new" Content="New" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="20"/>
+        <ComboBox x:Name="cbox_timers" Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="3" VerticalAlignment="Top" Width="69" Height="18" FontSize="8" FontWeight="Bold"/>
+        <Button x:Name="button_add" Content="Add To" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Height="20"/>
+        <Button x:Name="button_load" Content="Load Lists" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="69"/>
     </Grid>
+
 </Window>
